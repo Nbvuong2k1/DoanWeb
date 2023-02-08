@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- link reset css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" th:href="@{/assets/css/base.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/mainSite.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/grid.css}">
+<!--  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">-->
+  <link rel="stylesheet" th:href="@{/assets/images/}">
+<!--  <link rel="stylesheet" th:href="@{/assets/css/featured.css}">-->
+<!--  <link rel="stylesheet" th:href="@{/assets/css/detail.css}">-->
+  <script src="./assets/JavaScript/dateTime.js"></script>
+
+  <!-- link gg fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Merriweather:wght@400;700&family=Montserrat:wght@300&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Merriweather:wght@400;700&family=Montserrat:wght@300&family=Nanum+Myeongjo:wght@400;700;800&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+
+  <!-- link font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Nổi bật</title>
+</head>
+<body>
+<div class="news-website">
+  <div class="header" id="pin">
+    <ul>
+      <li><a  href="./posts-in-category.html"><img style="margin-top: 10px;" id="icon-news" src="./assets/images/news-icon.png" alt="News icon" /></a></li>
+      <li>
+        <p id="date-time">DateTime</p>
+        <script>displayDatetime()</script>
+      </li>
+      <li>
+        <form class="search-form" action="" style="display: flex; margin-top: 10px;">
+          <input type="text" placeholder="Search.." name="search">
+          <button style="width: 70px; text-align: center; margin-left: 5px;" type="submit">Search</button>
+        </form>
+      </li>
+    </ul>
+
+
+
+    </a>
+  </div>
+  <div class="menu-bar">
+    <ul>
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 1" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thời sự</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 2" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Góc nhìn</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 3" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thế giới</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 4" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Giáo dục</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 5" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Kinh doanh</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 6" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Khoa học</a></li>-->
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 7" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Giải trí</a></li>-->
+          <li><a th:each="category : ${categories}" th:if="${category.id} == 8" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thể thao</a></li>
+<!--      <li><a th:each="category : ${categories}" th:if="${category.id} == 9" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Pháp luật</a></li>-->
+      <li th:each="category : ${cate}">
+        <a th:href="@{/posts-in-category/{id}(id = ${category.id})}" th:text="${category.name}"></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="grid wide">
+      <div class="row">
+        <div class="col l-2 l-o-5">
+          <h1 class="menu-header" th:text="${category.name}"></h1>
+        </div>
+        <div class="col l-12">
+          <div class="menu-divider"></div>
+        </div>
+      </div>
+      <div class="row page" th:each="post : ${posts}">
+        <div class="col l-6">
+          <a  class="menu-top-left" th:href="@{/find-post/{id}(id = ${post.getId()})}" >
+            <img class="menu-top-left__item-big-img"   th:src="@{'data:image/jpeg;base64,' + ${post.getImage()}}"></img>
+            <h4 class="menu-top-left__item-big-title" th:text="${post.getName()}">
+            </h4>
+
+          </a>
+        </div>
+        <div class="col l-3">
+          <div class="menu-top-right">
+            <div class="row">
+              <div class="col l-12">
+                <a href="#" class="menu-top-left">
+                  <img class="menu-top-left__item-big-img"   th:src="@{'data:image/jpeg;base64,' + ${post.getImage()}}"></img>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time" >-->
+<!--                                            3 ngÃ y trÆ°á»c-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-12">
+                <a href="#" class="menu-top-left">
+                  <img class="menu-top-left__item-big-img"   th:src="@{'data:image/jpeg;base64,' + ${post.getImage()}}"></img>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            3 ngÃ y trÆ°á»c-->
+<!--                                        </span>-->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col l-3">
+          <div class="menu-top-right">
+            <div class="row">
+              <div class="col l-12">
+                <a href="#" class="menu-top-left">
+                  <img class="menu-top-left__item-big-img"   th:src="@{'data:image/jpeg;base64,' + ${post.getImage()}}"></img>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            3 ngÃ y trÆ°á»c-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-12">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            3 ngÃ y trÆ°á»c-->
+<!--                                        </span>-->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l-3">
+          <a href="#" class="menu-top-left">
+            <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+            <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+            </h4>
+<!--            <span class="menu-top-left__item-time">-->
+<!--                                1 tuáº§n trÆ°á»c-->
+<!--                            </span>-->
+          </a>
+        </div>
+        <div class="col l-3">
+          <a href="#" class="menu-top-left">
+            <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+            <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+            </h4>
+<!--            <span class="menu-top-left__item-time">-->
+<!--                                1 tuáº§n trÆ°á»c-->
+<!--                            </span>-->
+          </a>
+        </div>
+        <div class="col l-3">
+          <a href="#" class="menu-top-left">
+            <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+            <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+            </h4>
+<!--            <span class="menu-top-left__item-time">-->
+<!--                                1 tuáº§n trÆ°á»c-->
+<!--                            </span>-->
+          </a>
+        </div>
+        <div class="col l-3">
+          <a href="#" class="menu-top-left">
+            <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+            <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+            </h4>
+<!--            <span class="menu-top-left__item-time">-->
+<!--                                1 tuáº§n trÆ°á»c-->
+<!--                            </span>-->
+          </a>
+        </div>
+
+
+
+
+      </div>
+      <div class="row page-more-header">
+        <div class="col l-12">
+          <h1 class="menu-more-header">Tin mới</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l-12">
+          <div class="menu-more">
+            <div class="row">
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+              <div class="col l-3">
+                <a href="#" class="menu-top-left">
+                  <div class="menu-top-left__item-img" th:src="*{'data:image/jpeg;base64,' + post.image}"></div>
+                  <h4 class="menu-top-left__item-title" th:text="${post.name}">
+
+
+                  </h4>
+<!--                  <span class="menu-top-left__item-time">-->
+<!--                                            Nov 14th 2022-->
+<!--                                        </span>-->
+                </a>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+      </div>
+      <span>
+                    <pre>
+                    Báo tiếng Việt nhiều người xem nhất
+            Đồ án sinh viên trường Đại học Xây Dựng Hà Nội (HUCE)
+                    </pre>
+                </span>
+      <div>
+        <h3>Contact to Post News</h3>
+          <p>
+          <pre>Email: vuong227164@nuce.edu.vn</pre>
+          </p>
+          <p>
+          <pre>Phone: 0359552500</pre>
+          <p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- <script src="../layout/header.js"></script>
+<script src="../layout/footer.js"></script> -->
+</body>
+</html>

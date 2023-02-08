@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>News</title>
+    <link rel="stylesheet" th:href="@{/assets/css/mainSite.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/base.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/main.css}">-->
+    <script src="./assets/JavaScript/dateTime.js"></script>
+    <!--icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/assets/images/}">
+<!--    <link rel="apple-touch-icon" sizes="57x57" href="Favicons/apple-icon-57x57.png">-->
+<!--    <link rel="apple-touch-icon" sizes="60x60" href="Favicons/apple-icon-60x60.png">-->
+<!--    <link rel="apple-touch-icon" sizes="72x72" href="Favicons/apple-icon-72x72.png">-->
+<!--    <link rel="apple-touch-icon" sizes="76x76" href="Favicons/apple-icon-76x76.png">-->
+<!--    <link rel="apple-touch-icon" sizes="114x114" href="Favicons/apple-icon-114x114.png">-->
+<!--    <link rel="apple-touch-icon" sizes="120x120" href="Favicons/apple-icon-120x120.png">-->
+<!--    <link rel="apple-touch-icon" sizes="144x144" href="Favicons/apple-icon-144x144.png">-->
+<!--    <link rel="apple-touch-icon" sizes="152x152" href="Favicons/apple-icon-152x152.png">-->
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="Favicons/apple-icon-180x180.png">-->
+<!--    <link rel="icon" type="image/png" sizes="192x192" href="Favicons/android-icon-192x192.png">-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="Favicons/favicon-32x32.png">-->
+<!--    <link rel="icon" type="image/png" sizes="96x96" href="Favicons/favicon-96x96.png">-->
+<!--    <link rel="icon" type="image/png" sizes="16x16" href="Favicons/favicon-16x16.png">-->
+<!--    <link rel="manifest" href="/manifest.json">-->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+    <div class="header" id="pin">
+        <ul>
+            <li><a  href="./mainpage.html"><img style="margin-top: 10px;" id="icon-news" src="./assets/images/news-icon.png" alt="News icon" /></a></li>
+            <li>
+                <p id="date-time">DateTime</p>
+                <script>displayDatetime()</script>
+            </li>
+            <li>
+                <form class="search-form" action="" style="display: flex; margin-top: 10px;">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button style="width: 70px; text-align: center; margin-left: 5px;" type="submit">Search</button>
+                </form>
+            </li> 
+        </ul>
+        
+        
+
+        </a>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 1" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thời sự</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 2" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Góc nhìn</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 3" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thế giới</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 4" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Giáo dục</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 5" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Kinh doanh</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 6" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Khoa học</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 7" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Giải trí</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 8" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thể thao</a></li>
+            <li><a th:each="category : ${categories}" th:if="${category.id} == 9" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Pháp luật</a></li>
+        </ul>
+    </div>
+    <div class="news-content">
+        <div class="news-content-main" style="height:100%">
+            <h1 style="text-align: center;">Tin Nổi Bật!</h1>
+            <a style="text-align: center;font-size: 30px;font-weight: bold;color: red;"th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}" th:href="@{find-post/{id}(id=${post.id})}"></a>
+           <img th:each="post : ${posts}" th:if="${post.id} == 13"
+                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}" th:href="@{find-post/{id}(id=${post.id})}"></img>
+            <a class="news-content-para" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}">
+            </a>
+
+        </div>
+        <div class="list-news-content" style="width: 30%;">
+            <div class="sidebar-menu clearfix">
+                <h1 href="#">
+                    <h3>Tin mới</h3>
+                </h1>
+
+            </div>
+            <div class="grid-container-news">
+                <div class="grid-news">
+<!--                    <a href="#">-->
+                    <div class="col l-12">
+                        <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                            <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                            <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+
+
+                            </h4>
+                            <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+
+                                        </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid-news">
+<!--                    <a href="#">-->
+                    <img th:each="post : ${posts}" th:if="${post.id} == 15"
+                         th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                    <a style="font-size: 20px;text-align:left; color: darkred" th:each="post : ${posts}" th:if="${post.id} == 15" th:text="${post.name}" th:href="@{/find-post/{id}(id = ${post.id})}"></a>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+                <div class="grid-news">
+                    <a href="#">
+                        <img src="Images/trang-an-ninh-binh.jpg">
+                        <p style="display:inline">news-1</p>
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3 style="font-size: 30px;color: #dd4b39">Tin thể thao</h3>
+    <div class="under-news-grid">
+
+        <div class="row">
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 18"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 18"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 18" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 18" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 19"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 19"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 19" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 19" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 16"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 16"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 16" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 16" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 17"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 17"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 17" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 17" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+            <div class="col l-3">
+
+                <a class="menu-top-left" th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}">
+                <img class="menu-top-left__item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                <h4 class="menu-top-left__item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+
+                </h4>
+                <span class="menu-top-left__item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+
+                                        </span>
+                <!--            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>-->
+                </a>
+            </div>
+<!--            <div class="col l-8">-->
+<!--                <a class="home-popular__middle-item"th:each="post : ${posts}" th:if="${post.id} == 13"  th:href="@{/find-post/{id}(id = ${post.id})}"></a>-->
+<!--                <img class="home-popular__middle-item-img" th:each="post : ${posts}" th:if="${post.id} == 13"-->
+<!--                     th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--                <h4 class="home-popular__middle-item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">-->
+
+<!--                </h4>-->
+<!--                <span class="home-popular__middle-item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">-->
+
+<!--                                        </span>-->
+<!--                &lt;!&ndash;            <p th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.content}" th:href="@{/find-post/{id}(id = ${post.id})}"></p>&ndash;&gt;-->
+<!--                </a>-->
+<!--            </div>-->
+        </div>
+<!--        <div class="under-news">-->
+<!--            <a style="text-align: left;"  th:each="post : ${posts}" th:if="${post.id} == 15" th:text="${post.name}"th:href="@{/find-post/{id}(id = ${post.id})}"></a>-->
+<!--            <img th:each="post : ${posts}" th:if="${post.id} == 15"-->
+<!--                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--&lt;!&ndash;            <p>News</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <a style="text-align: left;"th:each="post : ${posts}" th:if="${post.id} == 16" th:text="${post.name}"th:href="@{/find-post/{id}(id = ${post.id})}">Title</a>-->
+<!--            <img th:each="post : ${posts}" th:if="${post.id} == 16"-->
+<!--                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--&lt;!&ndash;            <p>News</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <a style="text-align: left;"th:each="post : ${posts}" th:if="${post.id} == 17" th:text="${post.name}"th:href="@{/find-post/{id}(id = ${post.id})}">Title</a>-->
+<!--            <img th:each="post : ${posts}" th:if="${post.id} == 17"-->
+<!--                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--&lt;!&ndash;            <p>News</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <a style="text-align: left;"th:each="post : ${posts}" th:if="${post.id} == 18" th:text="${post.name}"th:href="@{/find-post/{id}(id = ${post.id})}">Title</a>-->
+<!--            <img th:each="post : ${posts}" th:if="${post.id} == 18"-->
+<!--                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--&lt;!&ndash;            <p>News</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <a style="text-align: left;"th:each="post : ${posts}" th:if="${post.id} == 19" th:text="${post.name}"th:href="@{/find-post/{id}(id = ${post.id})}">Title</a>-->
+<!--            <img th:each="post : ${posts}" th:if="${post.id} == 19"-->
+<!--                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>-->
+<!--&lt;!&ndash;            <p>News</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <h3>Title</h3>-->
+<!--            <img src="Images/news-9.jpg" />-->
+<!--            <p>News</p>-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <h3>Title</h3>-->
+<!--            <img src="Images/news-8.jpg" />-->
+<!--            <p>News</p>-->
+<!--        </div>-->
+<!--        <div class="under-news">-->
+<!--            <h3>Title</h3>-->
+<!--            <img src="Images/news-10.png" />-->
+<!--            <p>News</p>-->
+<!--        </div>-->
+    </div>
+    <div style="text-align: center;">
+    <p style="margin-top: 50px;">
+        <pre>
+
+        </pre>
+        <div>
+            <a href="#pin"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+        </div>
+    </p>
+    </div>  
+    <footer>
+        <div class="footer-container">
+            <div>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+            </div>
+            <span>
+                <pre>
+                Báo tiếng Việt nhiều người xem nhất
+            Đồ án sinh viên trường Đại học Xây Dựng Hà Nội (HUCE)
+
+                </pre>
+            </span>
+            <div>
+                <h4>Contact to Post News</h4>
+                    <p>
+                    <pre>Email: vuong227164@nuce.edu.vn</pre>
+                    </p>
+                    <p>
+                    <pre>Phone: 0359552500</pre>
+                    <p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

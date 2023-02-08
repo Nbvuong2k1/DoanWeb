@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link reset css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/base.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/images/}">
+
+    <!-- link gg fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Merriweather:wght@400;700&family=Montserrat:wght@300&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Merriweather:wght@400;700&family=Montserrat:wght@300&family=Nanum+Myeongjo:wght@400;700;800&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>News</title>
+</head>
+<body>
+    <div class="news-website">
+            <header class="header" >
+                <div class="grid wide">
+                    <div class="row">
+                        <div class="col l-1">
+                            <a href="/" class="logo">NEWS</a>
+                        </div>
+                        <div class="col l-9 nav">
+                            <nav class="nav__bar hide-on-mobile-tablet">
+                                <ul class="nav__list">
+                                    <li class="nav__items"><a th:href="@{/index}" class="menu-link">Trang chủ</a></li>
+                                    <li class="nav__items">
+                                        <a class="menu-link" th:each="category : ${categories}" th:if="${category.id} == 1" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thời sự</a>
+                                    </li>
+                                    <li class="nav__items">
+                                        <a class="menu-link" th:each="category : ${categories}" th:if="${category.id} == 2" th:href="@{/posts-in-category/{id}(id = ${category.id})}">Chính trị</a>
+                                    </li>
+                                    <li class="nav__items">
+                                        <a class="menu-link" th:each="category : ${categories}" th:if="${category.id} == 3" th:href="@{/posts-in-category/{id}(id = ${category.id})}">Thể thao</a>
+                                    </li>
+                                    <li class="nav__items">
+                                        <a class="menu-link" th:each="category : ${categories}" th:if="${category.id} == 4" th:href="@{/posts-in-category/{id}(id = ${category.id})}">Khoa học</a>
+                                    </li>
+                                    <li class="nav__items">
+                                        <a class="menu-link" th:each="category : ${categories}" th:if="${category.id} == 5" th:href="@{/posts-in-category/{id}(id = ${category.id})}">Quân sự</a>
+                                    </li>
+                                    <li class="nav__items">
+                                        <a href="pages/about.html" class="menu-link">Khác</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col l-2">
+                            <form class="search__box" th:action="@{/search-results/0}" method="get">
+                                <input class="search-txt" type="text" placeholder="Nhập từ khóa" id="search" name="keyword">
+                                <div class="search-btn" style="width: 30%; display: inline-block;">
+                                    <button  type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+
+        <div class="container">
+            <div class="grid wide">
+                <div class="row first__part">
+                    <div class="col l-3">
+                        <span class="label">
+                            Tin nổi bật
+                        </span>
+                        <div class="home-popular__left">
+                            <div class="row">
+                                <div class="col l-12" >
+                                    <div class="test-1">
+                                        <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 1" th:href="@{/find-post/{id}(id = ${post.id})}">
+<!--                                            th:each="post : ${posts}" th:if="${post.id} == 1" th:href="@{/find-post/{id}(id = ${post.id})}"-->
+                                            <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 1"
+                                                 th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                            ></img>
+                                            <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 1" th:text="${post.name}">
+                                                Apple reportedly plans to use US-made chips starting in 2024
+                                            </h4>
+                                            <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 1" th:text="${post.time}">
+                                            20 hours ago
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col l-12">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 4" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 4"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 4" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 4" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-12">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 6" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 6"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 6" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="home-popular__middle">
+                            <div class="row">
+                                <div class="col l-12">
+                                    <a class="home-popular__middle-item" th:each="post : ${posts}" th:if="${post.id} == 2" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__middle-item-img" th:each="post : ${posts}" th:if="${post.id} == 2"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__middle-item-title" th:each="post : ${posts}" th:if="${post.id} == 2" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__middle-item-time" th:each="post : ${posts}" th:if="${post.id} == 2" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-12">
+                                    <div class="home-popular__left">
+                                        <div class="row">
+                                            <div class="col l-6">
+                                                <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 7" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                                    <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 7"
+                                                         th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                                    ></img>
+                                                    <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 7" th:text="${post.name}">
+                                                        Apple reportedly plans to use US-made chips starting in 2024
+                                                    </h4>
+                                                    <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 7" th:text="${post.time}">
+                                                        20 hours ago
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="col l-6">
+                                                <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 8" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                                    <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 8 "
+                                                         th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                                    ></img>
+                                                    <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 8" th:text="${post.name}">
+                                                        Apple reportedly plans to use US-made chips starting in 2024
+                                                    </h4>
+                                                    <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 8" th:text="${post.time}">
+                                                        20 hours ago
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-3 first__part-right">
+                        <div class="home-popular__left">
+                            <div class="row">
+                                <div class="col l-12">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 3" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 3"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 3" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 3" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-12">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 5" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 5"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 5" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 5" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-12">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 9" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 9"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 9" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 9" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row second__part">
+                    <div class="col l-4">
+                        <span class="label">
+                            Maybe you like
+                        </span>
+                        <div class="home-featured__left">
+                            <div class="row">
+                                <div class="col l-12">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 10" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 10"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 10" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 10" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-12">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 11" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 11"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 11" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 11" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-8">
+                        <div class="home-featured__right">
+                            <div class="row">
+                                <div class="col l-6">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 12" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 12"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 12" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 12" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 13" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 13"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 13" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 14" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 14"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 14" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 14" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-featured__right-item" th:each="post : ${posts}" th:if="${post.id} == 15" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-featured__right-item-img" th:each="post : ${posts}" th:if="${post.id} == 15"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}" >
+                                        </img>
+                                        <div class="home-featured__right-item-content">
+                                            <h4 class="home-featured__right-item-title" th:each="post : ${posts}" th:if="${post.id} == 15" th:text="${post.name}">
+                                                VR-controlled robots are being designed to treat injured soldiers
+                                            </h4>
+                                        </div>
+                                        <span class="home-featured__right-item-time" th:each="post : ${posts}" th:if="${post.id} == 15" th:text="${post.time}">
+                                            4 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row second__part-1">
+                    <div class="col l-6">
+                        <div class="home-featured__left-1">
+                            <div class="row">
+                                <div class="col l-6">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 16" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 16"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 16" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 16" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 17" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 17"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 17" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 17" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 18" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 18"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 18" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 18" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col l-6">
+                                    <a class="home-popular__left-item" th:each="post : ${posts}" th:if="${post.id} == 19" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                        <img class="home-popular__left-item-img" th:each="post : ${posts}" th:if="${post.id} == 19"
+                                             th:src="@{'data:image/jpeg;base64,' + ${post.image}}"
+                                        ></img>
+                                        <h4 class="home-popular__left-item-title" th:each="post : ${posts}" th:if="${post.id} == 19" th:text="${post.name}">
+                                            Apple reportedly plans to use US-made chips starting in 2024
+                                        </h4>
+                                        <span class="home-popular__left-item-time" th:each="post : ${posts}" th:if="${post.id} == 19" th:text="${post.time}">
+                                            20 hours ago
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="row">
+                            <div class="col l-12">
+                                <a class="home-popular__middle-item" th:each="post : ${posts}" th:if="${post.id} == 20" th:href="@{/find-post/{id}(id = ${post.id})}">
+                                    <img class="home-popular__middle-item-img home-featured__right-item-img-1" th:each="post : ${posts}" th:if="${post.id} == 20"
+                                         th:src="@{'data:image/jpeg;base64,' + ${post.image}}"></img>
+                                    <h4 class="home-popular__middle-item-title" th:each="post : ${posts}" th:if="${post.id} == 20" th:text="${post.name}">
+                                        FTX says it’s removing trading and withdrawals, moving digital assets to a cold wallet after a $477 million suspected hack
+                                    </h4>
+                                    <span class="home-popular__middle-item-time" th:each="post : ${posts}" th:if="${post.id} == 20" th:text="${post.time}">
+                                        4 hours ago
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row third__part">
+                    <div class="col l-9">
+                        <span class="label">
+                            Tin mới nhất
+                        </span>
+                        <div class="home-latest">
+                            <div class="row">
+                                <div class="col l-12" th:each="postIndex:${posts}">
+                                    <div class="home-latest-item">
+                                        <a href="#" class="home-latest-item-img-click">
+                                            <img class="home-latest-item-img" th:src="*{'data:image/jpeg;base64,' + postIndex.image}" >
+                                            </img>
+                                        </a>
+                                        <div class="home-latest-item-content">
+                                            <a class="home-latest-item-title" th:text="${postIndex.name}" >
+                                                The best teach toys and gifts for kids in 2022
+                                            </a>
+                                            <span class="home-latest-item-time" th:text="${postIndex.time}">
+                                                20 hours ago
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row load-more-home">
+                    <div class="col l-2 l-o-4">
+<!--                        <nav aria-label="Page navigation example">-->
+<!--                            <ul class="pagination">-->
+<!--                                <li th:if="${currentPageHome != 0}" class="page-item">-->
+<!--                                    <a th:href="@{'/page-index?page=' + ${currentPageHome - 1}}" class="page-link" href="#" >Previous</a>-->
+<!--                                </li>-->
+<!--                                <li th:each="i : ${#numbers.sequence(1, totalPagesHome)}" th:classappend="${currentPageHome == i - 1  ? 'active' : ''}" class="page-item">-->
+<!--                                    <a th:href="@{'/page-index?page=' + ${i}}" class="page-link" href="#" ><span th:text="${i}"></span></a>-->
+<!--                                </li>-->
+<!--                                <li th:if="${currentPageHome + 1 != totalPagesHome}" class="page-item">-->
+<!--                                    <a th:href="@{'/page-index?page=' + ${currentPageHome + 1 }}" class="page-link" href="#" >Next</a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </nav>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <a href="#" class="footer-logo">NEWS</a>
+                </div>
+                <div class="row">
+                    <div class="col l-4">
+                        <h5 class="footer-heading">Theo dõi</h5>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    Linkedin
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-brands fa-twitter"></i>
+                                    Twitter
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-4">
+                        <h5 class="footer-heading">Thông tin</h5>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">Giấy phép</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">Thông tin</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">Hỗ trợ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-4">
+                        <h5 class="footer-heading">Liên hệ</h5>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    55 Giải Phóng, quận Hai Bà Trưng, thành phố Hà Nội
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-solid fa-phone"></i>
+                                    0359552500
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    webnews2022@gmail.com
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                    www.webnews.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l-4 l-o-5">
+                        <p class="footer-privacy"></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./script.js" async defer></script>
+</body>
+</html>

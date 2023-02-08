@@ -1,0 +1,177 @@
+:root{
+    --white-color:#181a18;
+    --black-color:#000;
+    --text-color: #2d3748;
+    --background-color: #f4f4f5;
+    --time-color: #6b6d70;
+    --title-color: #2b2d32;
+    --title-color-hover: #3867d6;
+    --header-background-color: #bbf5a4;
+    --menu-hover-color: #fcb700;
+    --label-color: #050201;
+    --footer-background-color: #f59467;
+    --page-detail-info-color: #171717;
+}
+/*html{*/
+/*    font-size: 62.5%;*/
+/*    font-family: 'Dosis', sans-serif;*/
+/*}*/
+/**{*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+
+/*.grid__row{*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+
+/*!* menu-page *!*/
+
+/*.menu-header{*/
+/*    font-family: 'Dosis', sans-serif;*/
+/*    text-transform: uppercase;*/
+/*    font-weight: 900;*/
+/*    font-size: 3rem;*/
+/*    text-align: center;*/
+/*    color: var(--label-color);*/
+/*    letter-spacing: 0.1rem;*/
+/*}*/
+
+/*.menu-divider{*/
+/*    background-color: var(--menu-hover-color);*/
+/*    height: 6px;*/
+/*    left: 0;*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*}*/
+
+.menu-top-left{
+    padding-bottom: 4rem;
+    display: block;
+    text-decoration: none;
+}
+
+/*.page{*/
+/*    margin-top: 6px;*/
+/*}*/
+
+/*.menu-top-left__item-big-img{*/
+/*    height: 405px;*/
+/*    width: 588px;*/
+/*    object-fit: cover;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/*.menu-top-left__item-big-title{*/
+/*    font-size: 4.2rem;*/
+/*    font-family: 'Nanum Myeongjo', serif;*/
+/*    line-height: 5rem;*/
+/*    height: 15rem;*/
+/*    margin: 1rem 0;*/
+/*    overflow: hidden;*/
+/*    display: block;*/
+/*    display: -webkit-box;*/
+/*    -webkit-box-orient: vertical;*/
+/*    -webkit-line-clamp: 3;*/
+/*    color: var(--title-color);*/
+/*}*/
+
+/*.menu-top-left__item-big-title:hover{*/
+/*    color: var(--title-color-hover);*/
+/*}*/
+
+/*!* .menu-top-right{*/
+
+/*} *!*/
+
+.menu-top-left__item-img{
+    height: 195px;
+    width: 282px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.menu-top-left__item-title{
+    font-size: 2rem;
+    font-family: 'Nanum Myeongjo', serif;
+    line-height: 3rem;
+    height: 6rem;
+    margin: 1rem 0;
+    overflow: hidden;
+    display: grid;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: var(--title-color);
+}
+
+/*.menu-top-left__item-title:hover{*/
+/*    color: var(--title-color-hover);*/
+/*}*/
+
+.menu-top-left__item-time{
+    color: var(--time-color);
+    font-size: 1.4rem;
+}
+
+
+/*.menu-more-header{*/
+/*    font-family: 'Dosis', sans-serif;*/
+/*    text-transform: uppercase;*/
+/*    font-weight: 900;*/
+/*    font-size: 3rem;*/
+/*    color: var(--label-color);*/
+/*    letter-spacing: 0.1rem;*/
+/*}*/
+
+/*.page-more-header{*/
+/*    position: relative;*/
+/*}*/
+
+/*.page-more-header::before{*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    width: 97.9%;*/
+/*    height: 1px;*/
+/*    left: 1%;*/
+/*    background-color: #7e838f;*/
+/*}*/
+
+/*.load-more{*/
+/*    padding: 3rem 0;*/
+/*}*/
+
+/*.load-more-home{*/
+/*    padding: 3rem 0;*/
+/*}*/
+
+/*.menu-load-more{*/
+/*    text-decoration: none;*/
+/*    font-size: 1.4rem;*/
+/*    font-weight: 800;*/
+/*    letter-spacing: 0.1rem;*/
+/*    text-align: center;*/
+/*    padding: 1rem;*/
+/*    border: 1px solid var(--label-color);*/
+/*    border-color: var(--label-color);*/
+/*    color: var(--label-color);*/
+/*    border-radius: 2rem;*/
+/*}*/
+
+/*.menu-load-more:hover{*/
+/*    background-color: var(--label-color);*/
+/*    color: var(--white-color);*/
+/*}*/
+
+
+/*!* detail-page *!*/
+/*.page-detail-img{*/
+/*    display: block;*/
+/*    margin: 0 auto;*/
+/*    !* width: 100%; *!*/
+/*    width: 792px;*/
+/*    height: 445px;*/
+/*    object-fit: cover;*/
+/*}*/

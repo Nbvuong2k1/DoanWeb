@@ -1,0 +1,85 @@
+@import url(imageCSS.css);
+@import url(searchform.css);
+@import url(gridnews.css);
+@import url(socialicon.css);
+@import url(menu-web-news.css);
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.header ul{
+    display: inline-flex;
+}
+.header ul li  {
+    margin-top: 5px;
+    margin-left: 50px;
+    list-style-type: none;
+}
+.header ul li a{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+.header ul li p {
+    margin-top: 27px;
+}
+.news-content-main {
+    width:70%;
+    border-left: solid 1px grey;
+    overflow:hidden;
+    float: left;
+}
+
+.list-news-content {
+    float: left;
+}
+.news-content {
+    overflow: hidden;
+    max-height: 800px;
+}
+footer{
+    border: 5px solid grey;
+    background-color: black;
+}
+footer span {
+    color: white;
+}
+.footer-container {
+    padding-top:10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.footer-container div {
+    color: white;
+}
+.news-content-main img {
+    width: 100%;
+    height: auto;
+}
+.clearfix::after, .clearfix::before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+#date-time {
+    margin-top: 25px;
+}
+.search-form {
+    margin-left: 50px;
+}
+
+.header-sign-in {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.header-sign-in p {
+    margin-top: 0px !important;
+}
+a.btn-create-post :hover{
+    background-color: rgb(9, 38, 43);
+}
