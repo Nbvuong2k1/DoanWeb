@@ -35,11 +35,11 @@
                         <fieldset>
 
                             <!-- Form Name -->
-                            <legend>ADD POSTS</legend>
+                            <legend>Thêm tin</legend>
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="post_name">POST NAME</label>
+                                <label class="col-md-4 control-label" for="post_name">Tiêu đề</label>
                                 <div class="col-md-4">
                                     <input id="post_name" th:field="*{name}" name="post_name" class="form-control input-md" required="" type="text">
 
@@ -48,10 +48,10 @@
 
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="categories">CATEGORY</label>
+                                <label class="col-md-4 control-label" for="categories">Thể loại</label>
                                 <div class="col-md-4">
                                     <select id="categories" th:field="*{category}" name="categories" class="form-control">
-                                      <option th:value="null">SELECT</option>
+                                      <option th:value="null">Thể loại</option>
                                         <option th:each="category : ${categories}"
                                                 th:value="${category.id}"
                                                 th:text="${category.name}">
@@ -62,7 +62,7 @@
 
                             <!-- Text area-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="description">POST CONTENT </label>
+                                <label class="col-md-4 control-label" for="description">Nội dung</label>
                                 <div class="col-md-4">
                                     <textarea class="form-control" id="description" th:field="*{content}" name="description" rows="6" cols="50"></textarea>
                                 </div>
@@ -70,7 +70,7 @@
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="time">TIME</label>
+                                <label class="col-md-4 control-label" for="time">Thời gian</label>
                                 <div class="col-md-4">
                                     <input id="time" name="time" th:field="*{time}" class="form-control input-md" required="" type="text">
 
@@ -82,7 +82,7 @@
                                 <div class="col-md-4">
                                     <!-- File Button -->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="imagePost">IMAGE POST</label>
+                                        <label class="col-md-4 control-label" for="imagePost">Hình ảnh</label>
                                         <div class="col-md-4">
                                             <input id="imagePost" name="imagePost" class="input-file" type="file">
                                         </div>
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
                     </form>
                 </div>
 

@@ -417,7 +417,7 @@
     margin-top: 3rem;
     /* position: relative; */
 }
-/*
+
 .third__part::after{
     content: "";
     position: absolute;
@@ -426,7 +426,7 @@
     background-color: #7e838f;
     top: 100%;
     left: 1%;
-} */
+}
 
 .label{
     font-size: 2.8rem;

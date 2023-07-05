@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Customer",
+    "\\Customer\\src",
+    "\\Customer\\src\\main",
+    "\\Customer\\src\\main\\java",
+    "\\Customer\\src\\main\\java\\com",
+    "\\Customer\\src\\main\\java\\com\\technews",
+    "\\Customer\\src\\main\\java\\com\\technews\\customer",
+    "\\Customer\\src\\main\\java\\com\\technews\\customer\\config"
+  ],
+  "SelectedNode": "\\Customer\\src\\main\\java\\com\\technews\\customer\\config\\CustomerConfiguration.java",
+  "PreviewInSolutionExplorer": false
+}

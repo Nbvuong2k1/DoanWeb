@@ -34,7 +34,7 @@
                         <p>No category</p>
                     </div>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new category</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Thêm thể loại</button>
 
                     <div th:if="${success}" class="text-center alert alert-success">
                         <p th:text="${success}"></p>
@@ -47,10 +47,10 @@
                     <table class="table table-striped" th:if="${size > 0}">
                         <thead>
                         <tr>
-                            <th scope="col">Category Index</th>
-                            <th scope="col">Category Name</th>
-                            <th scope="col">Edit Category Name</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Chỉnh sửa</th>
+                            <th scope="col">Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,11 +58,11 @@
                             <th scope="row" th:text="${category.id}"></th>
                             <td th:text="${category.name}"></td>
                             <td>
-                                <a id="editButton" th:href="@{/findById/(id = ${category.id})}" class="btn btn-primary">Update</a>
+                                <a id="editButton" th:href="@{/findById/(id = ${category.id})}" class="btn btn-primary">Cập nhật</a>
                             </td>
                             <td>
-                                <a th:if = "${category.is_activated} == true" th:href="@{/delete-category/(id = ${category.id})}" class="btn btn-warning">Deleted</a>
-                                <a th:if = "${category.is_activated} == false" th:href="@{/enable-category/(id = ${category.id})}" class="btn btn-primary">Enabled</a>
+                                <a th:if = "${category.is_activated} == true" th:href="@{/delete-category/(id = ${category.id})}" class="btn btn-warning">Xóa</a>
+                                <a th:if = "${category.is_activated} == false" th:href="@{/enable-category/(id = ${category.id})}" class="btn btn-primary">Cho phép</a>
                             </td>
                         </tr>
                         </tbody>

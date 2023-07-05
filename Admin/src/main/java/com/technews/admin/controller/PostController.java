@@ -64,6 +64,7 @@ public class PostController {
         Page<PostDto> posts = postService.searchPosts(pageNo, keyword);
         model.addAttribute("title", "Search Result");
         model.addAttribute("posts", posts);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("size", posts.getSize());
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", posts.getTotalPages());

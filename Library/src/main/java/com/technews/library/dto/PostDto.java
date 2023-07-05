@@ -14,6 +14,7 @@ public class PostDto {
     private String content;
     private String image;
     private String time;
+    private String keyword;
     private Category category;
     private boolean activated;
     private boolean deleted;

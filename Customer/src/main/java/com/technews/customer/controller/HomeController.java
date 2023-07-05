@@ -24,11 +24,7 @@ public class HomeController {
     @Autowired
     private CategoryService categoryService;
 
-//    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
-//    public String index(Model model){
-//
-//        return "index";
-//    }
+
 
     @GetMapping("/index")
     public String index(Model model){
@@ -53,9 +49,10 @@ public class HomeController {
 //        List<Category> categories = categoryService.findAll();
         Post post = postService.getPostById(id);
         Long categoryId = post.getCategory().getId();
+        List<Category> cate = categoryService.findAll();
 //        List<Post> posts = postService.getRelatedPosts(categoryId);
         model.addAttribute("post", post);
-//        model.addAttribute("posts", posts);
+        model.addAttribute("cate", cate);
         return "articlepage";
     }
 
@@ -66,6 +63,7 @@ public class HomeController {
         List<CategoryDto> categories = categoryService.getCategoryAndPost();
         List<Post> posts = postService.getPostsInCategory(categoryId);
         List<Category> cate = categoryService.findAll();
+
         model.addAttribute("cate", cate);
         model.addAttribute("category", category);
         model.addAttribute("categories", categories);
@@ -73,32 +71,15 @@ public class HomeController {
         return "posts-in-category";
     }
 
-//    @GetMapping("/posts-in-category/{id}")
-//    public String getPostsInCategory(@PathVariable("id") Long categoryId, Model model){
-//        Category category = categoryService.findById(categoryId);
-//        List<CategoryDto> categories = categoryService.getCategoryAndPost();
-//        List<Post> posts = postService.getPostsInCategory(categoryId);
-//        model.addAttribute("category", category);
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("posts", posts);
-//        return "posts-in-category";
-//    }
 
-//    @GetMapping("/find-posts/{id}")
-//    public String findPostsById(@PathVariable("id") Long id, Model model){
-//        Post post = postService.getPostById(id);
-//        Long categoryId = post.getCategory().getId();
-//        List<Post> posts = postService.getRelatedPosts(categoryId);
-//        model.addAttribute("post", post);
-//        model.addAttribute("posts", posts);
-//        return "posts-in-category";
-//    }
 
 
     @GetMapping("/post")
     public String post(Model model) {
 
         List<PostDto> postDtoList = postService.findALl();
+        List<Category> cate = categoryService.findAll();
+        model.addAttribute("cate", cate);
         model.addAttribute("title", "Manage Post");
         model.addAttribute("posts", postDtoList);
         model.addAttribute("size", postDtoList.size());
@@ -108,6 +89,8 @@ public class HomeController {
     @GetMapping("/posts/{pageNo}")
     public String postsPage(@PathVariable("pageNo") int pageNo, Model model){
         Page<PostDto> posts = postService.pagePosts(pageNo);
+        List<Category> cate = categoryService.findAll();
+        model.addAttribute("cate", cate);
         model.addAttribute("title", "Manage Post");
         model.addAttribute("size", posts.getSize());
         model.addAttribute("totalPages", posts.getTotalPages());
@@ -116,16 +99,7 @@ public class HomeController {
         return "result-post";
     }
 
-    @GetMapping("/page-index")
-    public String postsPageHome(@RequestParam(value = "page", defaultValue = "1") int pageNo, Model model){
-        Page<Post> posts = postService.findAllPostsByPage(pageNo, 10);
-        model.addAttribute("title", "Manage Post");
-        model.addAttribute("size", posts.getSize());
-        model.addAttribute("totalPagesHome", posts.getTotalPages());
-        model.addAttribute("currentPageHome", pageNo);
-        model.addAttribute("posts", posts);
-        return "mainpage";
-    }
+
 
     @GetMapping("/search-results/{pageNo}")
     public String searchPosts(@PathVariable("pageNo")int pageNo,
@@ -133,8 +107,11 @@ public class HomeController {
                               Model model){
 
         Page<PostDto> posts = postService.searchPosts(pageNo, keyword);
+        List<Category> cate = categoryService.findAll();
+        model.addAttribute("cate", cate);
         model.addAttribute("title", "Search Result");
         model.addAttribute("posts", posts);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("size", posts.getSize());
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", posts.getTotalPages());

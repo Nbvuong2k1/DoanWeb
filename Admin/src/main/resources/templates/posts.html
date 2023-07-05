@@ -33,10 +33,10 @@
                 <!--search-->
                 <div>
                     <form th:action="@{/search-result/0}" method="get" >
-                        <input type="text"  id="search" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        <input type="text"  id="search" name="keyword" class="form-control bg-light border-0 small" placeholder="search for..."
                                style="width: 30%; display: inline-block;">
                         <div class="input-group-append" style="width: 30%; display: inline-block;">
-                            <button  type="submit" class="btn btn-primary">Search</button>
+                            <button  type="submit" class="btn btn-primary">Tìm kiếm</button>
                         </div>
                     </form>
                 </div>
@@ -44,7 +44,7 @@
 
                 <!--Page Heading-->
                 <div th:if="${size == 0}">
-                    <p>No Posts in the page</p>
+                    <p>Không có bài đăng nào</p>
                 </div>
                 <div th:if="${success}" class="text-center alert alert-success">
                     <p th:text="${success}"></p>
@@ -52,19 +52,19 @@
                 <div th:if="${error}" class="text-center alert alert-danger ">
                     <p th:text="${error}"></p>
                 </div>
-                <a class="btn btn-primary" th:href="@{/add-post}">Add new post</a>
+                <a class="btn btn-primary" th:href="@{/add-post}">Thêm tin mới</a>
 
                 <table class="table table-striped" th:if="${size > 0}">
                     <thead>
                     <tr >
                         <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Content</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Update</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Thể loại</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -79,11 +79,11 @@
                             <img style="height: 40px; width: 40px;" th:src="*{'data:image/jpeg;base64,'  }">
                         </td>
                         <td>
-                            <a th:href="@{update-post/{id} (id = ${post.id})}" class="btn btn-primary">Update</a>
+                            <a th:href="@{update-post/{id} (id = ${post.id})}" class="btn btn-primary">Cập nhật</a>
                         </td>
                         <td>
-                            <a th:if="${post.activated== false}" th:href="@{/enable-post/{id} (id = ${post.id})}" class="btn btn-primary">Enable</a>
-                            <a th:if="${post.deleted == false}" th:href="@{/delete-post/{id} (id = ${post.id})}" class="btn btn-danger">Delete</a>
+                            <a th:if="${post.activated== false}" th:href="@{/enable-post/{id} (id = ${post.id})}" class="btn btn-primary">Cho phép</a>
+                            <a th:if="${post.deleted == false}" th:href="@{/delete-post/{id} (id = ${post.id})}" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
                     </tbody>
@@ -94,13 +94,13 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li th:if="${currentPage != 0}" class="page-item">
-                            <a th:href="@{'/posts/' + ${currentPage - 1}}" class="page-link" href="#" >Previous</a>
+                            <a th:href="@{'/posts/' + ${currentPage - 1}}" class="page-link" href="#" >Trước</a>
                         </li>
                         <li th:each="i : ${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage == i - 1 ? 'active' : ''}" class="page-item">
                             <a th:href="@{'/posts/' + ${i - 1}}" class="page-link" href="#" ><span th:text="${i}"></span></a>
                         </li>
                         <li th:if="${currentPage + 1 != totalPages}" class="page-item">
-                            <a th:href="@{'/posts/' + ${currentPage + 1 }}" class="page-link" href="#" >Next</a>
+                            <a th:href="@{'/posts/' + ${currentPage + 1 }}" class="page-link" href="#" >Tiếp</a>
                         </li>
                     </ul>
                 </nav>

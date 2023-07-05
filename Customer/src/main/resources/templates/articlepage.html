@@ -8,23 +8,10 @@
     <link rel="stylesheet" th:href="@{/assets/css/base.css}">
     <link rel="stylesheet" th:href="@{/assets/css/detail.css}">
     <script src="./assets/JavaScript/dateTime.js"></script>
-    <!--icon-->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/assets/images/}">
-    <!--    <link rel="apple-touch-icon" sizes="57x57" href="Favicons/apple-icon-57x57.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="60x60" href="Favicons/apple-icon-60x60.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="72x72" href="Favicons/apple-icon-72x72.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="76x76" href="Favicons/apple-icon-76x76.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="114x114" href="Favicons/apple-icon-114x114.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="120x120" href="Favicons/apple-icon-120x120.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="144x144" href="Favicons/apple-icon-144x144.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="152x152" href="Favicons/apple-icon-152x152.png">-->
-    <!--    <link rel="apple-touch-icon" sizes="180x180" href="Favicons/apple-icon-180x180.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="192x192" href="Favicons/android-icon-192x192.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="32x32" href="Favicons/favicon-32x32.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="96x96" href="Favicons/favicon-96x96.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="16x16" href="Favicons/favicon-16x16.png">-->
-    <!--    <link rel="manifest" href="/manifest.json">-->
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -39,8 +26,8 @@
                 <script>displayDatetime()</script>
             </li>
             <li>
-                <form class="search-form" action="" style="display: flex; margin-top: 10px;">
-                    <input type="text" placeholder="Search.." name="search">
+                <form class="search-form"  th:action="@{/search-results/0}" method="get" style="display: flex; margin-top: 10px;">
+                    <input type="text" placeholder="Search.." name="keyword">
                     <button style="width: 70px; text-align: center; margin-left: 5px;" type="submit">Search</button>
                 </form>
             </li>
@@ -52,15 +39,7 @@
     </div>
     <div class="menu-bar">
         <ul>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 1" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thời sự</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 2" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Góc nhìn</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 3" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thế giới</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 4" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Video</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 5" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Kinh doanh</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 6" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Khoa học</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 7" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Giải trí</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 8" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Thể thao</a></li>
-                <li><a th:each="category : ${categories}" th:if="${category.id} == 9" th:href="@{/posts-in-category/{id}(id = ${category.id})}" >Pháp luật</a></li>
+
             <li th:each="category : ${cate}">
                 <a th:href="@{/posts-in-category/{id}(id = ${category.id})}" th:text="${category.name}"></a>
             </li>
@@ -77,16 +56,11 @@
             </span>
 
         </div>
-<!--        <pre><span class="page-detail-des" style="font-size: 13px" th:text="${post.content}"></span>-->
-                </pre>
-<!--            </p>-->
-<!--            <img class="clearfix" id="image2" src="/News Website/Images/news-10.png" />-->
-<!--            <p id="para3"></p>-->
-<!--            <img id="image3" src="/News Website/Images/news-5.jpg"/>-->
-<!--            <p id="para4"><p>-->
+
+
         </div>
         <div class="author">
-            <span style="position: relative; left: 650px;">vượng</span>
+            <span style="position: relative; left: 650px;"></span>
         </div>
         <footer>
             <div class="footer-container">
